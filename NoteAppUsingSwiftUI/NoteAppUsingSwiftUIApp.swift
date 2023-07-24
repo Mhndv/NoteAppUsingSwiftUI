@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct NoteAppUsingSwiftUIApp: App {
+    
+    
+    @StateObject var listViewModel:ListViewModel = ListViewModel() //to pass it to the listview
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            
+            NavigationStack{ //To make the entire app in NavigationStack
+                
+                ListView()
+            }
+           
+            .environmentObject(listViewModel)//now all the views have access to this viewmodel
+          
         }
     }
 }
